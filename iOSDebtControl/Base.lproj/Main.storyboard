@@ -138,6 +138,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="debtAmountText" destination="p9i-30-9ej" id="DfB-rA-52C"/>
+                        <outlet property="debtDescText" destination="oaM-Ug-Y4r" id="wUQ-84-icO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7O-ux-d1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

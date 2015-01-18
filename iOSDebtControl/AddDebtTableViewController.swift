@@ -12,12 +12,17 @@ var debt:Debt!
 
 class AddDebtTableViewController: UITableViewController {
 
+    @IBOutlet weak var debtDescText: UITextField!
+    
+    @IBOutlet weak var debtAmountText: UITextField!
+    
     @IBAction func cancelDebtAdding(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
 
     }
     @IBAction func addDebtAction(sender: AnyObject) {
-        debt = Debt(desc: "Example", amount: 3232)
+        var amount:Int = debtAmountText.text.toInt()!
+        debt = Debt(desc: debtDescText.text, amount: amount)
         debtsData.append(debt)
         dismissViewControllerAnimated(true, completion: nil)
 
