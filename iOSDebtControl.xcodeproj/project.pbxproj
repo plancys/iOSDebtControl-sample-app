@@ -16,6 +16,7 @@
 		8E63AF6F1A6BACBF0087D033 /* iOSDebtControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63AF6E1A6BACBF0087D033 /* iOSDebtControlTests.swift */; };
 		8E63AF791A6BAFE40087D033 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63AF781A6BAFE40087D033 /* TableViewController.swift */; };
 		8EB79B881A6BD2250085CFDD /* AddDebtTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB79B871A6BD2250085CFDD /* AddDebtTableViewController.swift */; };
+		8EB79B8A1A6C184F0085CFDD /* Debt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB79B891A6C184F0085CFDD /* Debt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		8E63AF6E1A6BACBF0087D033 /* iOSDebtControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDebtControlTests.swift; sourceTree = "<group>"; };
 		8E63AF781A6BAFE40087D033 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		8EB79B871A6BD2250085CFDD /* AddDebtTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDebtTableViewController.swift; sourceTree = "<group>"; };
+		8EB79B891A6C184F0085CFDD /* Debt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				8E63AF611A6BACBF0087D033 /* LaunchScreen.xib */,
 				8E63AF571A6BACBF0087D033 /* iOSDebtControl.xcdatamodeld */,
 				8E63AF531A6BACBF0087D033 /* Supporting Files */,
+				8EB79B891A6C184F0085CFDD /* Debt.swift */,
 			);
 			path = iOSDebtControl;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB79B8A1A6C184F0085CFDD /* Debt.swift in Sources */,
 				8E63AF5B1A6BACBF0087D033 /* ViewController.swift in Sources */,
 				8E63AF591A6BACBF0087D033 /* iOSDebtControl.xcdatamodeld in Sources */,
 				8E63AF561A6BACBF0087D033 /* AppDelegate.swift in Sources */,

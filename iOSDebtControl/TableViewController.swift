@@ -8,6 +8,12 @@
 
 import UIKit
 
+let debtsData = [
+    Debt(desc: "beer last night", amount: 2000),
+    Debt(desc: "vodka last night", amount: 2000),
+    Debt(desc: "weed last night", amount: 2000)
+]
+
 class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -30,25 +36,24 @@ class TableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return debtsData.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
+        println("Loading data to table...")
+        let cell = tableView.dequeueReusableCellWithIdentifier("DebtCell", forIndexPath: indexPath) as UITableViewCell
+        let debt = debtsData[ indexPath.row ] as Debt
+        cell.textLabel?.text = debt.desc
+        cell.detailTextLabel?.text = String(debt.amount/100)
         return cell
     }
-    */
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
