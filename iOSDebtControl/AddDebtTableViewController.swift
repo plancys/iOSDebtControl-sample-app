@@ -8,15 +8,17 @@
 
 import UIKit
 
+var debt:Debt!
+
 class AddDebtTableViewController: UITableViewController {
 
     @IBAction func cancelDebtAdding(sender: AnyObject) {
-        println("XXX")
         dismissViewControllerAnimated(true, completion: nil)
 
     }
     @IBAction func addDebtAction(sender: AnyObject) {
-        println("YYY")
+        debt = Debt(desc: "Example", amount: 3232)
+        debtsData.append(debt)
         dismissViewControllerAnimated(true, completion: nil)
 
     }
@@ -48,6 +50,11 @@ class AddDebtTableViewController: UITableViewController {
         // Return the number of rows in the section.
         return 1
     }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "SaveDebtDetail" {
+//                    }
+//    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

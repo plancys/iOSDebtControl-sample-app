@@ -8,10 +8,10 @@
 
 import UIKit
 
-let debtsData = [
-    Debt(desc: "beer last night", amount: 2000),
-    Debt(desc: "vodka last night", amount: 2000),
-    Debt(desc: "weed last night", amount: 2000)
+var debtsData = [
+    Debt(desc: "beer last night", amount: 2023),
+    Debt(desc: "vodka last night", amount: 2340),
+    Debt(desc: "weed last night", amount: 2040)
 ]
 
 class TableViewController: UITableViewController {
@@ -51,7 +51,7 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("DebtCell", forIndexPath: indexPath) as UITableViewCell
         let debt = debtsData[ indexPath.row ] as Debt
         cell.textLabel?.text = debt.desc
-        cell.detailTextLabel?.text = String(debt.amount/100)
+        cell.detailTextLabel?.text = String(debt.amount/100) + " PLN"
         return cell
     }
     /*
