@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Debt Control-->
         <scene sceneID="C96-bb-SeY">
             <objects>
                 <tableViewController id="7cu-GX-ars" sceneMemberID="viewController">
@@ -25,10 +25,10 @@
                             <outlet property="delegate" destination="7cu-GX-ars" id="loh-Ve-rR8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="lJd-3T-rOK">
+                    <navigationItem key="navigationItem" title="Debt Control" id="lJd-3T-rOK">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gqP-WT-pNh">
                             <connections>
-                                <segue destination="xCy-8a-Aq9" kind="presentation" id="0YJ-Wn-gYz"/>
+                                <segue destination="etb-HS-DQe" kind="modal" id="FxD-Tx-gjs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -38,32 +38,55 @@
             </objects>
             <point key="canvasLocation" x="-279" y="473"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="bHd-kC-Pjl">
+        <!--Add debt-->
+        <scene sceneID="ApD-xa-Myx">
             <objects>
-                <viewController id="11e-iI-7qp" customClass="ViewController" customModule="iOSDebtControl" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Gbr-tJ-tNO"/>
-                        <viewControllerLayoutGuide type="bottom" id="w6d-Eq-ZkN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vw4-CH-GDP">
+                <tableViewController storyboardIdentifier="addDebtSB" id="WOw-kw-hXX" customClass="AddDebtTableViewController" customModule="iOSDebtControl" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="JZk-Op-5uO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="SAy-lf-Sgz">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OLw-G5-3Kw">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Debt Description" id="Ssx-vb-9Fv">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1BJ-Ze-TuR">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1BJ-Ze-TuR" id="GgO-U0-abz">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oaM-Ug-Y4r">
+                                                    <rect key="frame" x="0.0" y="10" width="320" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="WOw-kw-hXX" id="chS-u1-kgU"/>
+                            <outlet property="delegate" destination="WOw-kw-hXX" id="QhD-NR-cJU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add debt" id="mRK-cB-HtV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GgB-OX-cfN">
                             <connections>
-                                <action selector="cancelAddingDebt:" destination="11e-iI-7qp" id="MEO-fh-Iva"/>
+                                <action selector="cancelDebtAdding:" destination="WOw-kw-hXX" id="ebX-hH-cg8"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="uAz-JP-6D8"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Nbg-bM-jML">
+                            <connections>
+                                <action selector="addDebtAction:" destination="WOw-kw-hXX" id="hDi-Zt-Ae6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dey-sg-UKq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z7O-ux-d1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="230" y="1229"/>
+            <point key="canvasLocation" x="307" y="1233"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4HF-0S-PUg">
@@ -83,22 +106,23 @@
             <point key="canvasLocation" x="-723" y="473"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="7xZ-zX-MOp">
+        <scene sceneID="zt0-1t-zLB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xCy-8a-Aq9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="etb-HS-DQe" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nzq-DV-NBm">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Wx-WS-lHF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="11e-iI-7qp" kind="relationship" relationship="rootViewController" id="o8w-pG-Vyu"/>
+                        <segue destination="WOw-kw-hXX" kind="relationship" relationship="rootViewController" id="EqD-U0-4BU"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8GP-mz-96p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uHu-CA-0mn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-279" y="1229"/>
+            <point key="canvasLocation" x="-279" y="1233"/>
         </scene>
     </scenes>
 </document>
