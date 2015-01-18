@@ -14,6 +14,7 @@
 		8E63AF601A6BACBF0087D033 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E63AF5F1A6BACBF0087D033 /* Images.xcassets */; };
 		8E63AF631A6BACBF0087D033 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E63AF611A6BACBF0087D033 /* LaunchScreen.xib */; };
 		8E63AF6F1A6BACBF0087D033 /* iOSDebtControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63AF6E1A6BACBF0087D033 /* iOSDebtControlTests.swift */; };
+		8E63AF791A6BAFE40087D033 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63AF781A6BAFE40087D033 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		8E63AF681A6BACBF0087D033 /* iOSDebtControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSDebtControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E63AF6D1A6BACBF0087D033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E63AF6E1A6BACBF0087D033 /* iOSDebtControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDebtControlTests.swift; sourceTree = "<group>"; };
+		8E63AF781A6BAFE40087D033 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				8E63AF551A6BACBF0087D033 /* AppDelegate.swift */,
 				8E63AF5A1A6BACBF0087D033 /* ViewController.swift */,
 				8E63AF5C1A6BACBF0087D033 /* Main.storyboard */,
+				8E63AF781A6BAFE40087D033 /* TableViewController.swift */,
 				8E63AF5F1A6BACBF0087D033 /* Images.xcassets */,
 				8E63AF611A6BACBF0087D033 /* LaunchScreen.xib */,
 				8E63AF571A6BACBF0087D033 /* iOSDebtControl.xcdatamodeld */,
@@ -218,6 +221,7 @@
 				8E63AF5B1A6BACBF0087D033 /* ViewController.swift in Sources */,
 				8E63AF591A6BACBF0087D033 /* iOSDebtControl.xcdatamodeld in Sources */,
 				8E63AF561A6BACBF0087D033 /* AppDelegate.swift in Sources */,
+				8E63AF791A6BAFE40087D033 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
