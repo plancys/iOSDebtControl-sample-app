@@ -16,6 +16,12 @@ class AddDebtTableViewController: UITableViewController {
     
     @IBOutlet weak var debtAmountText: UITextField!
     
+    @IBOutlet weak var personConnected: UITextField!
+    
+    @IBOutlet weak var personPhoneNumber: UITextField!
+    
+    @IBOutlet weak var isYourLiability: UISwitch!
+    
     @IBAction func cancelDebtAdding(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
 
@@ -47,7 +53,7 @@ class AddDebtTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 3
+        return 5
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
