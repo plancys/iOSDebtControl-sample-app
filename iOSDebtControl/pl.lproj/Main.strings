@@ -1,0 +1,27 @@
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "6Vn-oR-pnL"; */
+"6Vn-oR-pnL.text" = "Szczegóły";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Debt Amount"; ObjectID = "H1Y-4Z-6og"; */
+"H1Y-4Z-6og.headerTitle" = "Ilość długu (w PLN)";
+
+/* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "MqJ-d0-yoJ"; */
+"MqJ-d0-yoJ.text" = "Podtytuł";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Connected person"; ObjectID = "Nlv-gw-OtX"; */
+"Nlv-gw-OtX.headerTitle" = "Connected person";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Debt Description"; ObjectID = "Ssx-vb-9Fv"; */
+"Ssx-vb-9Fv.headerTitle" = "Debt Description";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "TMN-bf-cn3"; */
+"TMN-bf-cn3.text" = "Title";
+
+/* Class = "IBUINavigationItem"; title = "Debt Control"; ObjectID = "lJd-3T-rOK"; */
+"lJd-3T-rOK.title" = "Debt Control";
+
+/* Class = "IBUINavigationItem"; title = "Add debt"; ObjectID = "mRK-cB-HtV"; */
+"mRK-cB-HtV.title" = "Add debt";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "o5n-AB-vUY"; */
+"o5n-AB-vUY.text" = "Title";

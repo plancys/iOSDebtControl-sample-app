@@ -22,8 +22,8 @@ class AddDebtTableViewController: UITableViewController {
     }
     @IBAction func addDebtAction(sender: AnyObject) {
         var amount:Int = debtAmountText.text.toInt()!
-        debt = Debt(desc: debtDescText.text, amount: amount)
-        debtsData.append(debt)
+//        debt = Debt()
+//        debtsData.append(debt)
         dismissViewControllerAnimated(true, completion: nil)
 
     }

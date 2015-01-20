@@ -7,23 +7,77 @@
 //
 
 import UIKit
+import CoreData
 
-var debtsData = [
-    Debt(desc: "beer last night", amount: 2023),
-    Debt(desc: "vodka last night", amount: 2340),
-    Debt(desc: "weed last night", amount: 2040)
-]
+
+var debts = [Debt]()
 
 class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("!! !! ! ! !!")
+        fetchDebts()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        var context: NSManagedObjectContext = appDel.managedObjectContext!
+//
+//        var newDebt = NSEntityDescription.insertNewObjectForEntityForName("Debt", inManagedObjectContext: context) as NSManagedObject
+//        
+//        newDebt.setValue("Opis", forKey: "desc")
+//        newDebt.setValue(23.43, forKey: "amount")
+//        newDebt.setValue("Osoba", forKey: "connectedPerson")
+//        newDebt.setValue("423432423", forKey: "personPhoneNumber")
+//        newDebt.setValue(true, forKey: "isLiability")
+//        newDebt.setValue(NSDate(), forKey: "creationDate")
+//        
+//        context.save(nil)
+        
+        var request = NSFetchRequest(entityName: "Debt")
+        request.returnsObjectsAsFaults = false
+        var results = context.executeFetchRequest(request, error: nil)
+        
+        if results?.count > 0 {
+            for result: AnyObject in results! {
+                println(result.description)
+            }
+        }
+        else {
+            println("No data")
+        }
+
+    }
+    
+    lazy var managedObjectContext : NSManagedObjectContext? = {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            return managedObjectContext
+        }
+        else {
+            return nil
+        }
+        }()
+    
+    func fetchDebts() {
+        NSLog("fetching debts...")
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        var context: NSManagedObjectContext = appDel.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName: "Debt")
+        
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Debt] {
+            debts = fetchResult
+        }
+        NSLog("Fetched.")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,16 +96,16 @@ class TableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return debtsData.count
+        return debts.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         println("Loading data to table...")
         let cell = tableView.dequeueReusableCellWithIdentifier("DebtCell", forIndexPath: indexPath) as UITableViewCell
-        let debt = debtsData[ indexPath.row ] as Debt
+        let debt = debts[ indexPath.row ] as Debt
         cell.textLabel?.text = debt.desc
-        cell.detailTextLabel?.text = String(debt.amount/100) + " PLN"
+        cell.detailTextLabel?.text = debt.amount.stringValue + " PLN"
         return cell
     }
     /*
