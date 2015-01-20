@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 var debt:Debt!
 
@@ -27,9 +28,20 @@ class AddDebtTableViewController: UITableViewController {
 
     }
     @IBAction func addDebtAction(sender: AnyObject) {
-        var amount:Int = debtAmountText.text.toInt()!
-//        debt = Debt()
-//        debtsData.append(debt)
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        var context: NSManagedObjectContext = appDel.managedObjectContext!
+        var newDebt = NSEntityDescription.insertNewObjectForEntityForName("Debt", inManagedObjectContext: context) as Debt
+        
+        newDebt.desc = debtDescText.text
+        var string = NSString(string: debtAmountText.text)
+        newDebt.amount = string.doubleValue
+        newDebt.personPhoneNumber = personPhoneNumber.text
+        newDebt.connectedPerson = personConnected.text
+        newDebt.isLiability = isYourLiability.on == true
+        newDebt.creationDate = NSDate()
+        context.save(nil)
+        
+        //todo: refresh table
         dismissViewControllerAnimated(true, completion: nil)
 
     }
