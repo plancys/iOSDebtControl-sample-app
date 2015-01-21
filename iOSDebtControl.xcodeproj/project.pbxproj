@@ -18,6 +18,7 @@
 		8E63AF791A6BAFE40087D033 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63AF781A6BAFE40087D033 /* TableViewController.swift */; };
 		8E88F4411A6F04BA00DEBB71 /* Debt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88F4401A6F04BA00DEBB71 /* Debt.swift */; };
 		8EB79B881A6BD2250085CFDD /* AddDebtTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB79B871A6BD2250085CFDD /* AddDebtTableViewController.swift */; };
+		8EEE5A1D1A706BF7008551E9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEE5A1C1A706BF7008551E9 /* SettingsViewController.swift */; };
 		8EF2B9D31A703F98006BABAF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF2B9D21A703F98006BABAF /* MapKit.framework */; };
 		8EF2B9D51A703FA8006BABAF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF2B9D41A703FA8006BABAF /* CoreLocation.framework */; };
 		8EF881421A7017B900341130 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF881411A7017B900341130 /* DetailsViewController.swift */; };
@@ -51,6 +52,7 @@
 		8E63AF781A6BAFE40087D033 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		8E88F4401A6F04BA00DEBB71 /* Debt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debt.swift; sourceTree = "<group>"; };
 		8EB79B871A6BD2250085CFDD /* AddDebtTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDebtTableViewController.swift; sourceTree = "<group>"; };
+		8EEE5A1C1A706BF7008551E9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8EF2B9D21A703F98006BABAF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8EF2B9D41A703FA8006BABAF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8EF881411A7017B900341130 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				8E63AF551A6BACBF0087D033 /* AppDelegate.swift */,
 				8E63AF5A1A6BACBF0087D033 /* ViewController.swift */,
 				8E63AF5C1A6BACBF0087D033 /* Main.storyboard */,
+				8EEE5A1C1A706BF7008551E9 /* SettingsViewController.swift */,
 				8EF881411A7017B900341130 /* DetailsViewController.swift */,
 				8EB79B871A6BD2250085CFDD /* AddDebtTableViewController.swift */,
 				8E63AF781A6BAFE40087D033 /* TableViewController.swift */,
@@ -248,6 +251,7 @@
 				8EF881421A7017B900341130 /* DetailsViewController.swift in Sources */,
 				8EB79B881A6BD2250085CFDD /* AddDebtTableViewController.swift in Sources */,
 				8E63AF791A6BAFE40087D033 /* TableViewController.swift in Sources */,
+				8EEE5A1D1A706BF7008551E9 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

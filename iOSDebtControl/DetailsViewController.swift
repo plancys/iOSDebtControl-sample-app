@@ -54,6 +54,9 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshSettings()
+        
         descLabel.text = debt?.desc
         amountLable.text = debt!.amount.stringValue + " USD"
         connectedPersonLabel.text = debt?.connectedPerson
@@ -75,6 +78,12 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
         setupMap(debt!.latitude, longitudeVal: debt!.longitude)
         let thread = NSThread(target:self, selector:"updateCurrencyRates", object:nil)
         thread.start()
+    }
+    
+    func refreshSettings(){
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        let sorceCurrency = userDefaults.valueForKey("sourceCurrency")
+        let destCurrency = userDefaults.valueForKey("destinationCurrency")
     }
     
     func updateCurrencyRates(){
