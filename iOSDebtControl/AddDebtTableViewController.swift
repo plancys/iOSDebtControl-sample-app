@@ -75,9 +75,10 @@ class AddDebtTableViewController: UITableViewController {
     }
     
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "SaveDebtDetail" {
-//                    }
+//        var detailVC: DetailsViewController = segue.destinationViewController as DetailsViewController
+//        detailVC.debt =
 //    }
+
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

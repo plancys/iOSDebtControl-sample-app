@@ -14,6 +14,8 @@ var debts = [Debt]()
 
 class TableViewController: UITableViewController {
 
+    var indexOfSelectedPerson = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         println("!! !! ! ! !!")
@@ -115,8 +117,6 @@ class TableViewController: UITableViewController {
         return true
     }
     
-
-    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -129,6 +129,14 @@ class TableViewController: UITableViewController {
 //            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 //        }    
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var secondViewController : DetailsViewController = segue.destinationViewController as DetailsViewController
+        let indexPath = self.tableView.indexPathForSelectedRow()
+        let selectedDebt = debts[indexPath!.row] as Debt
+        secondViewController.debt = selectedDebt
+    }
+    
     
 
     
