@@ -18,14 +18,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("!! !! ! ! !!")
         fetchDebts()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         var context: NSManagedObjectContext = appDel.managedObjectContext!
@@ -84,20 +77,13 @@ class TableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         return debts.count
     }
 
@@ -107,14 +93,14 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("DebtCell", forIndexPath: indexPath) as UITableViewCell
         let debt = debts[ indexPath.row ] as Debt
         cell.textLabel?.text = debt.desc
-        cell.detailTextLabel?.text = debt.amount.stringValue + " PLN"
+        cell.detailTextLabel?.text = debt.amount.stringValue + " USD"
         return cell
     }
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
-        return true
+        return false
     }
     
     // Override to support editing the table view.
@@ -125,43 +111,17 @@ class TableViewController: UITableViewController {
             self.fetchDebts()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
-//        } else if editingStyle == .Insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }    
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var secondViewController : DetailsViewController = segue.destinationViewController as DetailsViewController
-        let indexPath = self.tableView.indexPathForSelectedRow()
-        let selectedDebt = debts[indexPath!.row] as Debt
-        secondViewController.debt = selectedDebt
+        if segue.identifier == "goToDetails" {
+            var secondViewController : DetailsViewController = segue.destinationViewController as DetailsViewController
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            let selectedDebt = debts[indexPath!.row] as Debt
+            secondViewController.debt = selectedDebt
+        } else {
+            
+        }
     }
-    
-    
-
-    
-    // Override to support rearranging the table view.
-//    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-//
-//    }
-    
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -33,7 +33,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="cDi-V2-poC" kind="show" id="J1R-rH-6lf"/>
+                                    <segue destination="cDi-V2-poC" kind="show" identifier="goToDetails" id="J1R-rH-6lf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
