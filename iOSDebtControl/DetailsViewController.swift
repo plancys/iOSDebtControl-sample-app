@@ -28,6 +28,11 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
     
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var currenciesLabel: UILabel!
+    
+    let source = "EUR"
+    let dest = "USD"
+    
     @IBAction func requestRepayment(sender: AnyObject) {
         if MFMessageComposeViewController.canSendText() {
             let messageVC = MFMessageComposeViewController()
@@ -66,7 +71,28 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
         dateLabel.text =  dateFormatter.stringFromDate(date)
         
         
+        
         setupMap(debt!.latitude, longitudeVal: debt!.longitude)
+        let thread = NSThread(target:self, selector:"updateCurrencyRates", object:nil)
+        thread.start()
+    }
+    
+    func updateCurrencyRates(){
+        let urlPath = "http://rate-exchange.appspot.com/currency?from=\(source)&to=\(dest)"
+        let url = NSURL(string: urlPath)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
+            if (error == nil) {
+                let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                println(jsonResult)
+                let value = jsonResult["rate"]
+                self.currenciesLabel.text = "\(self.source) is worth \(value as Double) \(self.dest)"
+            } else {
+                self.currenciesLabel.text = "Currency rates not available"
+                println(error)
+            }
+        })
+        task.resume()
     }
     
     func setupMap(latitudeVal:Double, longitudeVal:Double){
