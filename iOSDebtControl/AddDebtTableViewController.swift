@@ -8,10 +8,12 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+import MapKit
 
 var debt:Debt!
 
-class AddDebtTableViewController: UITableViewController {
+class AddDebtTableViewController: UITableViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var debtDescText: UITextField!
     
@@ -22,6 +24,10 @@ class AddDebtTableViewController: UITableViewController {
     @IBOutlet weak var personPhoneNumber: UITextField!
     
     @IBOutlet weak var isYourLiability: UISwitch!
+    
+    var manager = CLLocationManager()
+    
+    var location:CLLocation?
     
     @IBAction func cancelDebtAdding(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -39,15 +45,34 @@ class AddDebtTableViewController: UITableViewController {
         newDebt.connectedPerson = personConnected.text
         newDebt.isLiability = isYourLiability.on == true
         newDebt.creationDate = NSDate()
-        context.save(nil)
+        newDebt.longitude = location!.coordinate.longitude
+        newDebt.latitude = location!.coordinate.latitude
+        
         
         //todo: refresh table
+        context.save(nil)
         dismissViewControllerAnimated(true, completion: nil)
+        
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("Init Adding debt view")
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
 
+
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]) {
+        println("locations = \(locations)")
+        location = locations[0] as? CLLocation
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError) {
+        println(error)
     }
 
     override func didReceiveMemoryWarning() {

@@ -18,5 +18,7 @@ class Debt: NSManagedObject {
     @NSManaged var isLiability: NSNumber
     @NSManaged var personPhoneNumber: String
     @NSManaged var creationDate: NSDate
+    @NSManaged var latitude: Double
+    @NSManaged var longitude: Double
 
 }

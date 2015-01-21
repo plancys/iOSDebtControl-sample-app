@@ -8,8 +8,9 @@
 
 import UIKit
 import MessageUI
+import MapKit
 
-class DetailsViewController: UIViewController, MFMessageComposeViewControllerDelegate {
+class DetailsViewController: UIViewController, MFMessageComposeViewControllerDelegate, MKMapViewDelegate {
 
     var debtDesc: String = ""
     
@@ -24,6 +25,8 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
     @IBOutlet weak var areYouDebtorLabel: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func requestRepayment(sender: AnyObject) {
         if MFMessageComposeViewController.canSendText() {
@@ -63,7 +66,26 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
         dateLabel.text =  dateFormatter.stringFromDate(date)
         
         
-        // Do any additional setup after loading the view.
+        setupMap(debt!.latitude, longitudeVal: debt!.longitude)
+    }
+    
+    func setupMap(latitudeVal:Double, longitudeVal:Double){
+        var latitude:CLLocationDegrees = latitudeVal
+        var longitude:CLLocationDegrees = longitudeVal
+        var latDelta:CLLocationDegrees = 0.01
+        var longDelta:CLLocationDegrees = 0.01
+        var span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        var location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        var region:MKCoordinateRegion = MKCoordinateRegionMake(location,span)
+        mapView.setRegion(region, animated: false)
+        
+        var annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = "Debt creation place"
+        annotation.subtitle = "here your debt was created"
+        mapView.addAnnotation(annotation)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
