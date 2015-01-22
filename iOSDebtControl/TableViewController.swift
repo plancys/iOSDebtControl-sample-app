@@ -16,24 +16,23 @@ class TableViewController: UITableViewController {
 
     var indexOfSelectedPerson = 0
     
+    
+    @IBAction func cancel(segue:UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func done(segue:UIStoryboardSegue) {
+        var newDebtVC = segue.sourceViewController as AddDebtTableViewController
+        debts.append(newDebtVC.newDebt!)
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchDebts()
         
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        var context: NSManagedObjectContext = appDel.managedObjectContext!
-//
-//        var newDebt = NSEntityDescription.insertNewObjectForEntityForName("Debt", inManagedObjectContext: context) as NSManagedObject
-//        
-//        newDebt.setValue("Opis", forKey: "desc")
-//        newDebt.setValue(23.43, forKey: "amount")
-//        newDebt.setValue("Osoba", forKey: "connectedPerson")
-//        newDebt.setValue("423432423", forKey: "personPhoneNumber")
-//        newDebt.setValue(true, forKey: "isLiability")
-//        newDebt.setValue(NSDate(), forKey: "creationDate")
-//        
-//        context.save(nil)
-        
+        var context: NSManagedObjectContext = appDel.managedObjectContext!        
         var request = NSFetchRequest(entityName: "Debt")
         request.returnsObjectsAsFaults = false
         var results = context.executeFetchRequest(request, error: nil)

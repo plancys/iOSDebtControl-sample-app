@@ -328,11 +328,13 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GgB-OX-cfN">
                             <connections>
                                 <action selector="cancelDebtAdding:" destination="WOw-kw-hXX" id="ebX-hH-cg8"/>
+                                <segue destination="9UF-i7-9p3" kind="unwind" identifier="cancel" unwindAction="cancel:" id="T6J-ra-ysj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Nbg-bM-jML">
                             <connections>
                                 <action selector="addDebtAction:" destination="WOw-kw-hXX" id="hDi-Zt-Ae6"/>
+                                <segue destination="9UF-i7-9p3" kind="unwind" identifier="save" unwindAction="done:" id="FjE-IS-56m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -346,6 +348,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7O-ux-d1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="9UF-i7-9p3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="89" y="1143"/>
         </scene>

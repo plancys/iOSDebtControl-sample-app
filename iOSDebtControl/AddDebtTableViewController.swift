@@ -11,10 +11,10 @@ import CoreData
 import CoreLocation
 import MapKit
 
-var debt:Debt!
-
 class AddDebtTableViewController: UITableViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    var newDebt:Debt?
+    
     @IBOutlet weak var debtDescText: UITextField!
     
     @IBOutlet weak var debtAmountText: UITextField!
@@ -64,6 +64,27 @@ class AddDebtTableViewController: UITableViewController, MKMapViewDelegate, CLLo
         manager.startUpdatingLocation()
 
 
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "save" {
+            var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            var context: NSManagedObjectContext = appDel.managedObjectContext!
+            newDebt = NSEntityDescription.insertNewObjectForEntityForName("Debt", inManagedObjectContext: context) as Debt
+            newDebt?.setValue(debtDescText.text, forKey: "desc")
+            var string = NSString(string: debtAmountText.text)
+            newDebt?.setValue(string.doubleValue, forKey: "amount")
+            newDebt?.setValue(personPhoneNumber.text, forKey: "personPhoneNumber")
+            newDebt?.setValue(personConnected.text, forKey: "connectedPerson")
+            newDebt?.setValue(isYourLiability.on == true, forKey: "isLiability")
+            newDebt?.setValue(NSDate(), forKey: "creationDate")
+            newDebt?.setValue(location!.coordinate.longitude, forKey: "longitude")
+            newDebt?.setValue(location!.coordinate.latitude, forKey: "latitude")
+
+            //todo: refresh table
+            context.save(nil)
+
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]) {
