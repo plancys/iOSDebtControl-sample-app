@@ -46,9 +46,9 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
         }
         else {
             println("User hasn't setup Messages.app")
-            let alertController = UIAlertController(title: "Unable to send SMS", message:
-                "You don't have SMS application. Remember, you cannot test sms functionality on emulator!", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            let alertController = UIAlertController(title: NSLocalizedString("sms_error_message", comment: "..."), message:
+                NSLocalizedString("sms_message", comment: "..."), preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("dismis", comment: "dismiss"), style: UIAlertActionStyle.Default,handler: nil))
             
             self.presentViewController(alertController, animated: true, completion: nil)
         }
@@ -61,12 +61,12 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
         refreshSettings()
         
         descLabel.text = debt?.desc
-        amountLable.text = debt!.amount.stringValue + " USD"
+        amountLable.text = debt!.amount.stringValue + NSLocalizedString("currency_code", comment: "USD")
         connectedPersonLabel.text = debt?.connectedPerson
         
-        var areYouDebtor = "Yes"
+        var areYouDebtor = NSLocalizedString("yes", comment: "yes")
         if debt?.isLiability == false {
-            areYouDebtor = "No"
+            areYouDebtor = NSLocalizedString("no", comment: "no")
         }
         areYouDebtorLabel.text = areYouDebtor
         
@@ -106,9 +106,10 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
                 let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
                 println(jsonResult)
                 let value = jsonResult["rate"]
-                self.currenciesLabel.text = "\(source) is worth \(value as Double) \(dest)"
+                var str = NSLocalizedString("worths", comment: " is worth ")
+                self.currenciesLabel.text = "\(source) \(str) \(value as Double) \(dest)"
             } else {
-                self.currenciesLabel.text = "Currency rates not available"
+                self.currenciesLabel.text = NSLocalizedString("currency_no_available", comment: "Currency rates not available")
                 println(error)
             }
         })
@@ -127,8 +128,8 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
         
         var annotation = MKPointAnnotation()
         annotation.coordinate = location
-        annotation.title = "Debt creation place"
-        annotation.subtitle = "here your debt was created"
+        annotation.title = NSLocalizedString("debt_creation_place", comment: "Debt creation place")
+        annotation.subtitle = NSLocalizedString("debt_creation_desc", comment: "here your debt was created")
         mapView.addAnnotation(annotation)
         
         

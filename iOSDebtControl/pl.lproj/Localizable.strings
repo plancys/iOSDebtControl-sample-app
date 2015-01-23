@@ -1,7 +1,10 @@
-/* 
-  Localizable.strings
-  iOSDebtControl
-
-  Created by Kamil on 18/01/15.
-  Copyright (c) 2015 Kamil. All rights reserved.
-*/
+"currency_code" = " PLN";
+"sms_error_message" = "Nie można wysłać SMS";
+"sms_message" = "Nie ma aplikacji do obsługi SMS. Pamiętaj nie można tego testować na emulatorze!";
+"dismis" = "porzuć";
+"yes" = "tak";
+"no" = "nie";
+"currency_no_available" = "Nie udało się pobrać kursu walut";
+"worths" = " jest warty ";
+"debt_creation_place" = "Miejsce utowrzenia długu";
+"debt_creation_desc" = "tutaj utworzono dług";

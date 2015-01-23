@@ -82,7 +82,7 @@ class TableViewController: UITableViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("DebtCell", forIndexPath: indexPath) as UITableViewCell
         let debt = debts[ indexPath.row ] as Debt
         cell.textLabel?.text = debt.desc
-        cell.detailTextLabel?.text = debt.amount.stringValue + " USD"
+        cell.detailTextLabel?.text = debt.amount.stringValue + NSLocalizedString("currency_code", comment: "...")
         return cell
     }
     
