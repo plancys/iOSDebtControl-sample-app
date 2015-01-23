@@ -1,27 +1,75 @@
 
-/* Class = "IBUILabel"; text = "Detail"; ObjectID = "6Vn-oR-pnL"; */
-"6Vn-oR-pnL.text" = "Szczegóły";
+/* Class = "IBUILabel"; text = "Enable - you borrowed, disable - you lend"; ObjectID = "1Gi-OC-Tp7"; */
+"1Gi-OC-Tp7.text" = "Wlaczone - pożyczyłes od, wyłączone - pożyczyłeś komuś";
+
+/* Class = "IBUILabel"; text = "Conn. Person:"; ObjectID = "AnZ-nU-FGo"; */
+"AnZ-nU-FGo.text" = "Powiązane osoba:";
+
+/* Class = "IBUILabel"; text = "Source / Destination :"; ObjectID = "Bym-2x-7fm"; */
+"Bym-2x-7fm.text" = "Żrodło / Cel :";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "CQS-Ri-qql"; */
+"CQS-Ri-qql.text" = "Etykieta";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Debt Amount"; ObjectID = "H1Y-4Z-6og"; */
-"H1Y-4Z-6og.headerTitle" = "Ilość długu (w PLN)";
+"H1Y-4Z-6og.headerTitle" = "Ilość długu";
+
+/* Class = "IBUILabel"; text = "Waiting for currency rates..."; ObjectID = "KBZ-I4-Vpz"; */
+"KBZ-I4-Vpz.text" = "Pobieranie kursów walut...";
 
 /* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "MqJ-d0-yoJ"; */
 "MqJ-d0-yoJ.text" = "Podtytuł";
 
-/* Class = "IBUITableViewSection"; headerTitle = "Connected person"; ObjectID = "Nlv-gw-OtX"; */
-"Nlv-gw-OtX.headerTitle" = "Connected person";
+/* Class = "IBUIButton"; normalTitle = "Request repayment"; ObjectID = "Si8-pP-rcQ"; */
+"Si8-pP-rcQ.normalTitle" = "Poproś o spłacenie";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Debt Description"; ObjectID = "Ssx-vb-9Fv"; */
-"Ssx-vb-9Fv.headerTitle" = "Debt Description";
+"Ssx-vb-9Fv.headerTitle" = "Opis długu";
 
-/* Class = "IBUILabel"; text = "Title"; ObjectID = "TMN-bf-cn3"; */
-"TMN-bf-cn3.text" = "Title";
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "X0W-GC-uuN"; */
+"X0W-GC-uuN.text" = "Etykieta";
+
+/* Class = "IBUIButton"; normalTitle = "Change"; ObjectID = "X3O-j1-9G6"; */
+"X3O-j1-9G6.normalTitle" = "Zmień";
+
+/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "XBS-TL-xQr"; */
+"XBS-TL-xQr.normalTitle" = "Zapisz";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Person phone number"; ObjectID = "aK3-xV-9Eo"; */
+"aK3-xV-9Eo.headerTitle" = "Number telefonu osoby";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "bKy-mG-73e"; */
+"bKy-mG-73e.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Are you debtor?"; ObjectID = "bhK-m1-pw6"; */
+"bhK-m1-pw6.text" = "Czy jesteś dłużnikiem?";
+
+/* Class = "IBUILabel"; text = "Amount:"; ObjectID = "fvf-2c-3tI"; */
+"fvf-2c-3tI.text" = "Ilość:";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Person connected"; ObjectID = "j7l-KN-Sk7"; */
+"j7l-KN-Sk7.headerTitle" = "Powiązana osoba";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Is your liability?"; ObjectID = "kGX-sR-mop"; */
+"kGX-sR-mop.headerTitle" = "Czy to Twoje zobowiązanie?";
+
+/* Class = "IBUILabel"; text = "Date:"; ObjectID = "kRw-sc-kdT"; */
+"kRw-sc-kdT.text" = "Data:";
 
 /* Class = "IBUINavigationItem"; title = "Debt Control"; ObjectID = "lJd-3T-rOK"; */
-"lJd-3T-rOK.title" = "Debt Control";
+"lJd-3T-rOK.title" = "KonotrolaDługów";
+
+/* Class = "IBUILabel"; text = "Description:"; ObjectID = "lL1-gk-p1G"; */
+"lL1-gk-p1G.text" = "Opis:";
 
 /* Class = "IBUINavigationItem"; title = "Add debt"; ObjectID = "mRK-cB-HtV"; */
-"mRK-cB-HtV.title" = "Add debt";
+"mRK-cB-HtV.title" = "Dodaj dług";
 
 /* Class = "IBUILabel"; text = "Title"; ObjectID = "o5n-AB-vUY"; */
 "o5n-AB-vUY.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "vWX-5T-7y3"; */
+"vWX-5T-7y3.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "z9G-0W-ozV"; */
+"z9G-0W-ozV.text" = "Label";

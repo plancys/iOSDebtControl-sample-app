@@ -29,9 +29,6 @@ class SettingsViewController: UIViewController  ,UIPickerViewDataSource,UIPicker
         super.viewDidLoad()
         sourcePicker.delegate = self
         sourcePicker.dataSource = self;
-
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

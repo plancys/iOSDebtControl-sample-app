@@ -78,6 +78,8 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
         
         if(debt?.isLiability == true) {
             requestRepaymentButton.hidden = true
+        } else {
+            requestRepaymentButton.hidden = false
         }
         
         
