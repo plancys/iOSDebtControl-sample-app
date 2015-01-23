@@ -36,6 +36,7 @@ class AddDebtTableViewController: UITableViewController, MKMapViewDelegate, CLLo
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

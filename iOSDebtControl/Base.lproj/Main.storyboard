@@ -166,6 +166,7 @@
                         <outlet property="dateLabel" destination="bKy-mG-73e" id="v7N-1d-m7d"/>
                         <outlet property="descLabel" destination="vWX-5T-7y3" id="QG8-1o-6V8"/>
                         <outlet property="mapView" destination="ggU-Yk-jw6" id="bS5-FQ-zhT"/>
+                        <outlet property="requestRepaymentButton" destination="Si8-pP-rcQ" id="gXr-ie-oYD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmU-1Q-ZaD" userLabel="First Responder" sceneMemberID="firstResponder"/>

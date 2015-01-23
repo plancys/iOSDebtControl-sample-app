@@ -30,8 +30,11 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
     
     @IBOutlet weak var currenciesLabel: UILabel!
     
-    let source = "EUR"
-    let dest = "USD"
+    @IBOutlet weak var requestRepaymentButton: UIButton!
+
+    
+    var sourceDefault = "EUR"
+    var destDefault = "USD"
     
     @IBAction func requestRepayment(sender: AnyObject) {
         if MFMessageComposeViewController.canSendText() {
@@ -73,6 +76,9 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
         let date :NSDate = debt!.creationDate
         dateLabel.text =  dateFormatter.stringFromDate(date)
         
+        if(debt?.isLiability == true) {
+            requestRepaymentButton.hidden = true
+        }
         
         
         setupMap(debt!.latitude, longitudeVal: debt!.longitude)
@@ -87,6 +93,9 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
     }
     
     func updateCurrencyRates(){
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        var source = userDefaults.valueForKey("sourceCurrency") as String
+        var dest = userDefaults.valueForKey("destinationCurrency") as String
         let urlPath = "http://rate-exchange.appspot.com/currency?from=\(source)&to=\(dest)"
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
@@ -95,7 +104,7 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
                 let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
                 println(jsonResult)
                 let value = jsonResult["rate"]
-                self.currenciesLabel.text = "\(self.source) is worth \(value as Double) \(self.dest)"
+                self.currenciesLabel.text = "\(source) is worth \(value as Double) \(dest)"
             } else {
                 self.currenciesLabel.text = "Currency rates not available"
                 println(error)
