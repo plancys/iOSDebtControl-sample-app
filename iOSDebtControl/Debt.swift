@@ -20,5 +20,5 @@ class Debt: NSManagedObject {
     @NSManaged var creationDate: NSDate
     @NSManaged var latitude: Double
     @NSManaged var longitude: Double
-
+    
 }

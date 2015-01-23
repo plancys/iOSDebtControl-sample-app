@@ -10,43 +10,11 @@ import UIKit
 import CoreData
 
 
-var debts = [Debt]()
 
-class TableViewController: UITableViewController {
 
-    var indexOfSelectedPerson = 0
-    
-    
-    @IBAction func cancel(segue:UIStoryboardSegue) {
-        
-    }
-    
-    @IBAction func done(segue:UIStoryboardSegue) {
-        var newDebtVC = segue.sourceViewController as AddDebtTableViewController
-        debts.append(newDebtVC.newDebt!)
-    }
+class TableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        fetchDebts()
-        
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        var context: NSManagedObjectContext = appDel.managedObjectContext!        
-        var request = NSFetchRequest(entityName: "Debt")
-        request.returnsObjectsAsFaults = false
-        var results = context.executeFetchRequest(request, error: nil)
-        
-        if results?.count > 0 {
-            for result: AnyObject in results! {
-                println(result.description)
-            }
-        }
-        else {
-            println("No data")
-        }
-
-    }
+    var debts = [Debt]()
     
     lazy var managedObjectContext : NSManagedObjectContext? = {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -57,11 +25,33 @@ class TableViewController: UITableViewController {
             return nil
         }
         }()
+
     
+    @IBAction func cancel(segue:UIStoryboardSegue) {
+        
+    }
+    
+    
+    @IBAction func done(segue:UIStoryboardSegue) {
+        var newDebtVC = segue.sourceViewController as AddDebtTableViewController
+        saveNewItem(newDebtVC.newDebt!)
+    }
+
+    func save() {
+        var error : NSError?
+        if(managedObjectContext!.save(&error) ) {
+            println(error?.localizedDescription)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        println("Reloading table view...")
+        fetchDebts()
+    }
+
     func fetchDebts() {
         NSLog("fetching debts...")
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        var context: NSManagedObjectContext = appDel.managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName: "Debt")
         
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
@@ -96,21 +86,28 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-    // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return false
+        return true
     }
     
-    // Override to support editing the table view.
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+        if(editingStyle == .Delete ) {
             let debtToDelete = debts[indexPath.row]
-            managedObjectContext?.delete(debtToDelete)
+            managedObjectContext?.deleteObject(debtToDelete)
             self.fetchDebts()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            save()
         }
-
+    }
+    
+    func saveNewItem(debtItem : Debt) {
+        self.fetchDebts()
+        if let newItemIndex = find(debts, debtItem) {
+            let newLogItemIndexPath = NSIndexPath(forRow: newItemIndex, inSection: 0)
+            self.tableView.insertRowsAtIndexPaths([ newLogItemIndexPath ], withRowAnimation: .Automatic)
+            save()
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -120,7 +117,7 @@ class TableViewController: UITableViewController {
             let selectedDebt = debts[indexPath!.row] as Debt
             secondViewController.debt = selectedDebt
         } else {
-            
+            println("Segue->")
         }
     }
 }

@@ -121,15 +121,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si8-pP-rcQ">
-                                <rect key="frame" x="65" y="218" width="190" height="30"/>
-                                <state key="normal" title="Request repayment">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="requestRepayment:" destination="cDi-V2-poC" eventType="touchUpInside" id="XfL-I6-1MB"/>
-                                </connections>
-                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ggU-Yk-jw6">
                                 <rect key="frame" x="0.0" y="285" width="320" height="283"/>
                             </mapView>
@@ -152,6 +143,15 @@
                                 </state>
                                 <connections>
                                     <segue destination="Ub3-Hv-uv7" kind="show" id="CKa-gK-e7Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si8-pP-rcQ">
+                                <rect key="frame" x="159" y="218" width="145" height="30"/>
+                                <state key="normal" title="Request repayment">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestRepayment:" destination="cDi-V2-poC" eventType="touchUpInside" id="XfL-I6-1MB"/>
                                 </connections>
                             </button>
                         </subviews>

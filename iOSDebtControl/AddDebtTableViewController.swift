@@ -29,32 +29,6 @@ class AddDebtTableViewController: UITableViewController, MKMapViewDelegate, CLLo
     
     var location:CLLocation?
     
-    @IBAction func cancelDebtAdding(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-
-    }
-    @IBAction func addDebtAction(sender: AnyObject) {
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        var context: NSManagedObjectContext = appDel.managedObjectContext!
-        var newDebt = NSEntityDescription.insertNewObjectForEntityForName("Debt", inManagedObjectContext: context) as Debt
-        
-        newDebt.desc = debtDescText.text
-        var string = NSString(string: debtAmountText.text)
-        newDebt.amount = string.doubleValue
-        newDebt.personPhoneNumber = personPhoneNumber.text
-        newDebt.connectedPerson = personConnected.text
-        newDebt.isLiability = isYourLiability.on == true
-        newDebt.creationDate = NSDate()
-        newDebt.longitude = location!.coordinate.longitude
-        newDebt.latitude = location!.coordinate.latitude
-        
-        
-        //todo: refresh table
-        context.save(nil)
-        dismissViewControllerAnimated(true, completion: nil)
-        
-
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         println("Init Adding debt view")
@@ -62,15 +36,13 @@ class AddDebtTableViewController: UITableViewController, MKMapViewDelegate, CLLo
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "save" {
             var appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             var context: NSManagedObjectContext = appDel.managedObjectContext!
-            newDebt = NSEntityDescription.insertNewObjectForEntityForName("Debt", inManagedObjectContext: context) as Debt
+            newDebt = NSEntityDescription.insertNewObjectForEntityForName("Debt", inManagedObjectContext: context) as? Debt
             newDebt?.setValue(debtDescText.text, forKey: "desc")
             var string = NSString(string: debtAmountText.text)
             newDebt?.setValue(string.doubleValue, forKey: "amount")
@@ -78,12 +50,12 @@ class AddDebtTableViewController: UITableViewController, MKMapViewDelegate, CLLo
             newDebt?.setValue(personConnected.text, forKey: "connectedPerson")
             newDebt?.setValue(isYourLiability.on == true, forKey: "isLiability")
             newDebt?.setValue(NSDate(), forKey: "creationDate")
-            newDebt?.setValue(location!.coordinate.longitude, forKey: "longitude")
-            newDebt?.setValue(location!.coordinate.latitude, forKey: "latitude")
+            
+            if(location != nil ){
 
-            //todo: refresh table
-            context.save(nil)
-
+                newDebt?.setValue(location!.coordinate.longitude, forKey: "longitude")
+                newDebt?.setValue(location!.coordinate.latitude, forKey: "latitude")
+            }
         }
     }
     
