@@ -47,11 +47,11 @@
 		8E63AF6D1A6BACBF0087D033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E63AF6E1A6BACBF0087D033 /* iOSDebtControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDebtControlTests.swift; sourceTree = "<group>"; };
 		8E63AF781A6BAFE40087D033 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		8E77FE6D1A725AA700A0DBB9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		8E77FE6E1A725AA700A0DBB9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8E77FE6F1A725AA700A0DBB9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8E88F4401A6F04BA00DEBB71 /* Debt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debt.swift; sourceTree = "<group>"; };
 		8EB79B871A6BD2250085CFDD /* AddDebtTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDebtTableViewController.swift; sourceTree = "<group>"; };
-		8ED3ADBD1A724915006C5CC9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
-		8ED3ADBE1A724915006C5CC9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		8ED3ADC81A725258006C5CC9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8ED3ADCB1A7252DF006C5CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EEE5A1C1A706BF7008551E9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8EF2B9D21A703F98006BABAF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -207,6 +207,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 8E63AF471A6BACBE0087D033;
 			productRefGroup = 8E63AF511A6BACBE0087D033 /* Products */;
@@ -279,7 +280,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8E63AF5D1A6BACBF0087D033 /* Base */,
-				8ED3ADBD1A724915006C5CC9 /* pl */,
+				8E77FE6D1A725AA700A0DBB9 /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -288,7 +289,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8E63AF621A6BACBF0087D033 /* Base */,
-				8ED3ADBE1A724915006C5CC9 /* pl */,
+				8E77FE6E1A725AA700A0DBB9 /* pl */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -296,8 +297,8 @@
 		8ED3ADC91A725258006C5CC9 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8ED3ADC81A725258006C5CC9 /* pl */,
 				8ED3ADCB1A7252DF006C5CC9 /* Base */,
+				8E77FE6F1A725AA700A0DBB9 /* pl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
