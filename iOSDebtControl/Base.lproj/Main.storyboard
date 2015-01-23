@@ -12,6 +12,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="Ao8-7E-gRV">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="7cu-GX-ars" id="Ilm-Rg-j6D"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DebtCell" textLabel="o5n-AB-vUY" detailTextLabel="MqJ-d0-yoJ" style="IBUITableViewCellStyleValue1" id="Jlw-ZU-OO6">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -50,8 +58,28 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="Hnb-kv-Wyi" id="Vcr-H5-nx7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4X-Od-7SC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="U9O-ei-QQQ">
+                    <connections>
+                        <outlet property="delegate" destination="7cu-GX-ars" id="uH5-Tw-7qo"/>
+                        <outlet property="searchContentsController" destination="7cu-GX-ars" id="gnE-Xo-Jw3"/>
+                        <outlet property="searchResultsDataSource" destination="7cu-GX-ars" id="YjS-6r-7VW"/>
+                        <outlet property="searchResultsDelegate" destination="7cu-GX-ars" id="C0B-gN-jCm"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="Hnb-kv-Wyi">
+                    <connections>
+                        <outlet property="delegate" destination="7cu-GX-ars" id="kHO-5K-CZX"/>
+                        <outlet property="searchBar" destination="Ao8-7E-gRV" id="fZZ-Nw-5Fy"/>
+                        <outlet property="searchContentsController" destination="7cu-GX-ars" id="Gt0-T2-0bB"/>
+                        <outlet property="searchResultsDataSource" destination="7cu-GX-ars" id="QIQ-In-UVw"/>
+                        <outlet property="searchResultsDelegate" destination="7cu-GX-ars" id="2Na-bm-Nca"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-311" y="473"/>
         </scene>

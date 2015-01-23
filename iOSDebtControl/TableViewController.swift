@@ -9,12 +9,12 @@
 import UIKit
 import CoreData
 
-
-
-
-class TableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class TableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate,  UISearchBarDelegate, UISearchDisplayDelegate {
 
     var debts = [Debt]()
+    var filteredDebts = [Debt]()
+    let scopes = ["All", "Liability", "Lent"]
+    
     
     lazy var managedObjectContext : NSManagedObjectContext? = {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -48,6 +48,7 @@ class TableViewController: UITableViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         println("Reloading table view...")
         fetchDebts()
+        self.searchDisplayController!.searchBar.scopeButtonTitles = scopes
     }
 
     func fetchDebts() {
@@ -63,7 +64,47 @@ class TableViewController: UITableViewController, UITableViewDataSource, UITable
         NSLog("Fetched.")
         
     }
+    
+    
+    
+//    func filterContentForSearchText(searchText: String) {
+//        // Filter the array using the filter method
+//        self.filteredDebts = self.debts.filter({( debt: Debt) -> Bool in
+////            let categoryMatch = (scope == "All") || (candy.category == scope)
+////            let stringMatch = candy.name.rangeOfString(searchText)
+//            var description:NSString = NSString(string: debt.desc)
+//            return description.containsString(searchText)
+//        })
+//    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+            self.filteredDebts = self.debts.filter({( debt : Debt) -> Bool in
+                var categoryMatch = (scope == "All")
+                    || (scope == "Liability" && debt.isLiability == 1)
+                    || (scope == "Lent" && debt.isLiability == 0)
+                
+                var stringMatch = debt.connectedPerson.rangeOfString(searchText)
+                return categoryMatch && (stringMatch != nil)
+            })
+        
+    }
 
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+//        let scopes = self.searchDisplayController!.searchBar.scopeButtonTitles as [String]
+        self.searchDisplayController!.searchBar.scopeButtonTitles = scopes
+        let selectedScope = scopes[self.searchDisplayController!.searchBar.selectedScopeButtonIndex] as String
+        self.filterContentForSearchText(searchString, scope: selectedScope)
+        return true
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController!,
+        shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+            let scope = self.searchDisplayController!.searchBar.scopeButtonTitles as [String]
+            self.filterContentForSearchText(self.searchDisplayController!.searchBar.text, scope: scope[searchOption])
+            return true
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -73,16 +114,26 @@ class TableViewController: UITableViewController, UITableViewDataSource, UITable
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return debts.count
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            return self.filteredDebts.count
+        } else {
+            return self.debts.count
+        }
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         println("Loading data to table...")
-        let cell = tableView.dequeueReusableCellWithIdentifier("DebtCell", forIndexPath: indexPath) as UITableViewCell
-        let debt = debts[ indexPath.row ] as Debt
-        cell.textLabel?.text = debt.desc
-        cell.detailTextLabel?.text = debt.amount.stringValue + NSLocalizedString("currency_code", comment: "...")
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("DebtCell", forIndexPath: indexPath) as UITableViewCell
+        var debtToRow:Debt?
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            debtToRow = filteredDebts[indexPath.row]
+        } else {
+            debtToRow = debts[indexPath.row]
+        }
+        //let debt = debts[ indexPath.row ] as Debt
+        cell.textLabel?.text = "\(debtToRow!.desc) [with \(debtToRow!.connectedPerson)]"
+        cell.detailTextLabel?.text = debtToRow!.amount.stringValue + NSLocalizedString("currency_code", comment: "...")
         return cell
     }
     

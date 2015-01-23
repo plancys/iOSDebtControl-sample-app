@@ -90,8 +90,13 @@ class DetailsViewController: UIViewController, MFMessageComposeViewControllerDel
     
     func refreshSettings(){
         var userDefaults = NSUserDefaults.standardUserDefaults()
-        let sorceCurrency = userDefaults.valueForKey("sourceCurrency") as String
-        let destCurrency = userDefaults.valueForKey("destinationCurrency") as String
+        var   sourceDefault = userDefaults.valueForKey("sourceCurrency")
+        var destDefault = userDefaults.valueForKey("destinationCurrency")
+        if sourceDefault == nil {
+            NSUserDefaults.standardUserDefaults().setValue(self.sourceDefault, forKey:"sourceCurrency")
+            NSUserDefaults.standardUserDefaults().setValue(self.destDefault, forKey:"destinationCurrency")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
     }
     
     func updateCurrencyRates(){
